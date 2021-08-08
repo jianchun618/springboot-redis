@@ -1,6 +1,6 @@
-package com.baizhi.dao;
+package com.sxyh.dao;
 
-import com.baizhi.entity.User;
+import com.sxyh.entity.User;
 
 import java.util.List;
 public interface UserMapper {

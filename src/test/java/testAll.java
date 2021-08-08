@@ -1,6 +1,6 @@
-import com.baizhi.App;
-import com.baizhi.entity.User;
-import com.baizhi.dao.UserMapper;
+import com.sxyh.App;
+import com.sxyh.entity.User;
+import com.sxyh.dao.UserMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

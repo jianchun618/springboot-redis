@@ -1,7 +1,7 @@
-package com.baizhi.service;
+package com.sxyh.service;
 
-import com.baizhi.entity.User;
-import com.baizhi.dao.UserMapper;
+import com.sxyh.entity.User;
+import com.sxyh.dao.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

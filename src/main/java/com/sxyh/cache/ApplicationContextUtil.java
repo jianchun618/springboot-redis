@@ -1,4 +1,4 @@
-package com.baizhi.cache;
+package com.sxyh.cache;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
