@@ -1,0 +1,1 @@
+利用redis实现mybatis二级缓存构建redis分布式缓存
