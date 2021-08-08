@@ -1,12 +1,15 @@
 package com.sxyh.cache;
 
 import org.apache.ibatis.cache.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 
 public class RedisCache implements Cache {
+     private final static Logger logger = LoggerFactory.getLogger(RedisCache.class);
 
     //    @Autowired
 // 由于  RedisCache  mabatis实例化的没有交给工厂管理，所以不能注入  stringRedisTemplate
@@ -27,7 +30,7 @@ public class RedisCache implements Cache {
     // 第一个参数 是key（namespace，方法名，sq语句等）  第二个参数是查询结果
     @Override
     public void putObject(Object key, Object value) {
-        System.out.println("存放缓存");
+        logger.info("Redis存放缓存");
         //手动操作工厂获取缓存对象  stringRedisTemplate
         StringRedisTemplate stringRedisTemplate = (StringRedisTemplate) ApplicationContextUtil.getBeanByClass(StringRedisTemplate.class);
         //将查询结果，进行序列化为String字符串
@@ -42,7 +45,7 @@ public class RedisCache implements Cache {
     //获取对应方法的缓存数据
     @Override
     public Object getObject(Object key) {
-        System.out.println("获取缓存");
+        logger.info("Redis获取缓存");
         StringRedisTemplate stringRedisTemplate = (StringRedisTemplate) ApplicationContextUtil.getBeanByClass(StringRedisTemplate.class);
         if (stringRedisTemplate.opsForHash().hasKey(id, key.toString())) {
             String o = (String) stringRedisTemplate.opsForHash().get(id, key.toString());
@@ -64,7 +67,7 @@ public class RedisCache implements Cache {
         StringRedisTemplate stringRedisTemplate = (StringRedisTemplate) ApplicationContextUtil.getBeanByClass(StringRedisTemplate.class);
         //根据id清空数据
         stringRedisTemplate.delete(id);
-        System.out.println("清空缓存");
+        logger.info("Redis清空缓存");
     }
 
     @Override
