@@ -12,8 +12,9 @@
         from t_user
     </select>
 
-    <insert id="save" parameterType="user">
-        insert into t_user (name, password)
-        values (#{name}, #{password})
-    </insert>
-</mapper>
+    <insert id="save" parameterType="user" flushCache="true">
+        <!--   insert into t_user (name, password)
+           values (#{name}, #{password})-->
+           update t_user set name=#{name},password=#{password} where id=#{id}
+       </insert>
+   </mapper>

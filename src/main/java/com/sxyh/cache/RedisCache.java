@@ -3,6 +3,7 @@ package com.sxyh.cache;
 import org.apache.ibatis.cache.Cache;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.ReadWriteLock;
 
 public class RedisCache implements Cache {
@@ -23,8 +24,6 @@ public class RedisCache implements Cache {
     public String getId() {
         return this.id;
     }
-
-
     // 第一个参数 是key（namespace，方法名，sq语句等）  第二个参数是查询结果
     @Override
     public void putObject(Object key, Object value) {
@@ -36,6 +35,8 @@ public class RedisCache implements Cache {
 
         //存入redis数据库
         stringRedisTemplate.opsForHash().put(id, key.toString(), serialize);
+        //设置存活时间
+        stringRedisTemplate.expire(id,20, TimeUnit.SECONDS);
     }
 
     //获取对应方法的缓存数据

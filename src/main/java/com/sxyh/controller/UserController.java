@@ -33,7 +33,7 @@ public class UserController {
 
     @RequestMapping("/save")
     public void save() {
-        User us = new User(1, "superboy", "2222222222");
+        User us = new User(1, "zhangsan", "002222");
         userService.save(us);
     }
 
