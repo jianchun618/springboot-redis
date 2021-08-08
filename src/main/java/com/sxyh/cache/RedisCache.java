@@ -31,7 +31,6 @@ public class RedisCache implements Cache {
         System.out.println("存放缓存");
         //手动操作工厂获取缓存对象  stringRedisTemplate
         StringRedisTemplate stringRedisTemplate = (StringRedisTemplate) ApplicationContextUtil.getBeanByClass(StringRedisTemplate.class);
-
         //将查询结果，进行序列化为String字符串
         String serialize = SerializeUtils.serialize(value);
 
@@ -43,9 +42,7 @@ public class RedisCache implements Cache {
     @Override
     public Object getObject(Object key) {
         System.out.println("获取缓存");
-
         StringRedisTemplate stringRedisTemplate = (StringRedisTemplate) ApplicationContextUtil.getBeanByClass(StringRedisTemplate.class);
-
         if (stringRedisTemplate.opsForHash().hasKey(id, key.toString())) {
             String o = (String) stringRedisTemplate.opsForHash().get(id, key.toString());
             //反序列化

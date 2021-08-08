@@ -5,6 +5,7 @@ import com.sxyh.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -23,10 +24,11 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/queryAll")
-    public String queryAll(HttpSession session) {
+    @ResponseBody
+    public List<User> queryAll(HttpSession session) {
         List<User> users = userService.queryAll();
-        session.setAttribute("users",users);
-        return "index";
+        //session.setAttribute("users",users);
+        return users;
     }
 
     @RequestMapping("/save")

@@ -5,7 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.baizhi.dao")
+@MapperScan(basePackages = "com.sxyh.dao")
 /*
 * 组合注解：一个注解包含多个注解的功能
 * @SpringBootApplication=@Configuration+@ComponentScan+@EnableAutoConfiguration
