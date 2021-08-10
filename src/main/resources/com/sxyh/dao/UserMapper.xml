@@ -5,8 +5,8 @@
 <mapper namespace="com.sxyh.dao.UserMapper">
 
     <!--mybatis 的二级缓存-->
-    <cache type="com.sxyh.cache.RedisCache"/>
-
+ <!--   <cache type="com.sxyh.cache.RedisCache"/>
+-->
     <select id="queryAll" resultType="user">
         select *
         from t_user

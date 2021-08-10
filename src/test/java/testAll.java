@@ -1,3 +1,4 @@
+import com.alibaba.fastjson.JSONObject;
 import com.sxyh.App;
 import com.sxyh.entity.User;
 import com.sxyh.dao.UserMapper;
@@ -26,10 +27,22 @@ public class testAll {
 
     @Test
     public  void  testSave(){
-        User user = new User();
+/*        User user = new User();
         user.setId(99);
         user.setName("老oo");
         user.setPassword("123456");
-        userMapper.save(user);
+        userMapper.save(user);*/
+
+        long [] type = {1L,2L};
+        StringBuffer sb = new StringBuffer();
+        for(int i=0;i<type.length;i++){
+            //主要判断是否是最后一个条件
+            if (i==type.length-1 ) {
+                sb.append("'" + type[i] + "'");
+            } else {
+                sb.append("'" + type[i] + "'" + ",");
+            }
+        }
+        System.out.println(sb);
     }
 }
